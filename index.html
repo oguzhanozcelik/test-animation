@@ -1,163 +1,95 @@
-<p style="text-align: center; padding-top:2%;">Dear {{ first_name|default:'' }},<br/>
-    <br/>
-    Thanks so much for getting in touch. We’ve received your below enquiry, and one of our team will be in touch with
-    you very soon.<br/>
-    <br/>
-    Until then, we can’t wait for you to become part of our sustainable coffee movement, which you can learn more about
-    <a href="https://kissthehippo.com/pages/kiss-the-hippo-cares"
-       style="font-weight:bold; color:#000000; text-decoration:underline; text-underline-position:under;">here</a>.<br/>
-    <br/>
-    Best wishes and speak very soon,<br/>
-    Kiss the Hippo&nbsp;</p>
-
-<div style="width:100%;display: inline-block;text-align: center;vertical-align: center;">
-    <table style="margin:5px auto 30px auto;width:500px;font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;border-collapse: collapse;font-size: 14px;color:#222222">
-        <tbody>
-        <tr style="text-align: center;">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; border-radius: 5px; text-align: left;padding:5px;">
-                First Name
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; border-radius: 5px; text-align: left;padding:5px;">
-                {{ first_name }}
-            </td>
-        </tr>
-        <tr style="text-align: center">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                Last Name
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                {{ last_name }}
-            </td>
-        </tr>
-        <tr style="text-align: center">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                Email Address
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                {{ email }}
-            </td>
-        </tr>
-        <tr style="text-align: center">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                Phone Number
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                {{ person.phone_number }}
-            </td>
-        </tr>
-        <tr style="text-align: center">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                Business Name
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                {{ person.organization }}
-            </td>
-        </tr>
-        <tr style="text-align: center">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                Type of Business
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;padding:5px;">
-                {{ person|lookup:'Type of business' }}
-            </td>
-        </tr>
-        <tr style="text-align: center">
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;width:150px;">
-                How can we help?
-            </td>
-            <td style="border: 1px solid rgb(235, 235, 235); border-collapse: collapse; text-align: left;">{{
-                person|lookup:'How can we help' }}
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
-<style>
-    @-webkit-keyframes showTrees {
-        from {
-            opacity: 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Test Animation</title>
+    <style>
+        @-webkit-keyframes showTrees {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-        to {
-            opacity: 1;
-        }
-    }
 
-    @keyframes showTrees {
-        from {
+        @keyframes showTrees {
+            from {
+                display: none;
+            }
+            to {
+                display: inline-block
+            }
+        }
+
+        /*.showTree{
+            animation: showTrees 1s;
+        }*/
+        .showTree {
             display: none;
         }
-        to {
-            display: inline-block
+
+        .delay-1s {
+            animation: showTrees 11s;
         }
-    }
 
-    /*.showTree{
-        animation: showTrees 1s;
-    }*/
-    .showTree {
-        display: none;
-    }
+        .delay-2s {
+            animation: showTrees 2s;
+        }
 
-    .delay-1s {
-        animation: showTrees 11s;
-    }
+        .delay-3s {
+            animation: showTrees 3s;
+        }
 
-    .delay-2s {
-        animation: showTrees 2s;
-    }
-
-    .delay-3s {
-        animation: showTrees 3s;
-    }
-
-    .z-in-3{
-        z-index: 3;
-        position: relative;
-    }
-    .z-in-2{
-        z-index: 2;
-        position: relative;
-    }
-    .z-in-1{
-        z-index: 1;
-        position: relative;
-    }
-    .images-tree{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-end;
-    }
-    .images-tree .outside{
-        width: 60px;
-    }
-    .images-tree .outside.left{
-        position: relative;
-        right:-35px;
-    }
-    .images-tree .outside.right{
-        position: relative;
-        left:-35px;
-    }
-    .images-tree .inside{
-        width: 60px;
-    }
-    .images-tree .inside.left{
-        position: relative;
-        right:-15px;
-    }
-    .images-tree .inside.right{
-        position: relative;
-        left:-15px;
-    }
-    .images-tree .center{
-        width: 120px;
-    }
-</style>
+        .z-in-3{
+            z-index: 3;
+            position: relative;
+        }
+        .z-in-2{
+            z-index: 2;
+            position: relative;
+        }
+        .z-in-1{
+            z-index: 1;
+            position: relative;
+        }
+        .images-tree{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .images-tree .outside{
+            width: 60px;
+        }
+        .images-tree .outside.left{
+            position: relative;
+            right:-35px;
+        }
+        .images-tree .outside.right{
+            position: relative;
+            left:-35px;
+        }
+        .images-tree .inside{
+            width: 60px;
+        }
+        .images-tree .inside.left{
+            position: relative;
+            right:-15px;
+        }
+        .images-tree .inside.right{
+            position: relative;
+            left:-15px;
+        }
+        .images-tree .center{
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
 <div class="images-tree">
     <div class="animate__animated animate__fadeIn animate__delay-2s z-in-3"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/outside.svg" alt="1,000 trees Outside Tree" class="outside left"/> </div>
     <div class="animate__animated animate__fadeInUp animate__delay-1s z-in-2"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/inside.svg" alt="global reforestation initiative created to captureas much carbon as we can." class="inside left"/> </div>
@@ -165,3 +97,7 @@
     <div class="animate__animated animate__fadeInUp animate__delay-1s z-in-2"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/inside.svg" alt="global reforestation initiative created to captureas much carbon as we can right" class="inside right"/> </div>
     <div class="animate__animated animate__fadeIn animate__delay-2s z-in-3"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/outside.svg" alt="1,000 trees Outside Tree Right" class="outside right"/> </div>
 </div>
+</body>
+</html>
+
+
