@@ -5,6 +5,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Test Animation</title>
     <style>
         @-webkit-keyframes showTrees {
@@ -57,13 +58,13 @@
             position: relative;
         }
         .images-tree{
-            display: flex;
+            display: none;
             flex-direction: row;
             justify-content: center;
             align-items: flex-end;
         }
         .images-tree .outside{
-            width: 60px;
+            width: 40px;
         }
         .images-tree .outside.left{
             position: relative;
@@ -74,7 +75,7 @@
             left:-35px;
         }
         .images-tree .inside{
-            width: 60px;
+            width: 45px;
         }
         .images-tree .inside.left{
             position: relative;
@@ -85,19 +86,39 @@
             left:-15px;
         }
         .images-tree .center{
-            width: 120px;
+            width: 80px;
+        }
+        #tree-all{
+            display: none !important;
         }
     </style>
+    <script>
+        $(function (){
+            copyTree();
+            setInterval(function (){
+                copyTree();
+            },5000)
+            function copyTree(){
+                if($(".trees-container").length > 0){
+                    let item = '<div class="images-tree" id="tree-all">\n' +
+                        '    <div class="animate__animated animate__fadeIn animate__delay-2s z-in-3"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/outside.svg" alt="1,000 trees Outside Tree" class="outside left"/> </div>\n' +
+                        '    <div class="animate__animated animate__fadeInUp animate__delay-1s z-in-2"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/inside.svg" alt="global reforestation initiative created to captureas much carbon as we can." class="inside left"/> </div>\n' +
+                        '    <div class="animate__animated animate__fadeInUp animate__fast z-in-1"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/center-tree.svg" alt="Every month, we plant an average of 1,000 trees in the Kiss the Hippo Forest – a global reforestation initiative created to captureas much carbon as we can." class="center"/> </div>\n' +
+                        '    <div class="animate__animated animate__fadeInUp animate__delay-1s z-in-2"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/inside.svg" alt="global reforestation initiative created to captureas much carbon as we can right" class="inside right"/> </div>\n' +
+                        '    <div class="animate__animated animate__fadeIn animate__delay-2s z-in-3"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/outside.svg" alt="1,000 trees Outside Tree Right" class="outside right"/> </div>\n' +
+                        '</div>';
+                    $(".trees-container").empty();
+                    $(item).clone().removeAttr('id').css('display','flex').appendTo('.trees-container')
+                }
+            }
+        })
+    </script>
 </head>
 <body>
 <p>test</p>
-<div class="images-tree">
-    <div class="animate__animated animate__fadeIn animate__delay-2s z-in-3"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/outside.svg" alt="1,000 trees Outside Tree" class="outside left"/> </div>
-    <div class="animate__animated animate__fadeInUp animate__delay-1s z-in-2"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/inside.svg" alt="global reforestation initiative created to captureas much carbon as we can." class="inside left"/> </div>
-    <div class="animate__animated animate__fadeInUp animate__fast z-in-1"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/center-tree.svg" alt="Every month, we plant an average of 1,000 trees in the Kiss the Hippo Forest – a global reforestation initiative created to captureas much carbon as we can." class="center"/> </div>
-    <div class="animate__animated animate__fadeInUp animate__delay-1s z-in-2"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/inside.svg" alt="global reforestation initiative created to captureas much carbon as we can right" class="inside right"/> </div>
-    <div class="animate__animated animate__fadeIn animate__delay-2s z-in-3"><img src="https://cdn.shopify.com/s/files/1/2713/5040/files/outside.svg" alt="1,000 trees Outside Tree Right" class="outside right"/> </div>
-</div>
+<div class="trees-container"></div>
+777777
+
 </body>
 </html>
 
